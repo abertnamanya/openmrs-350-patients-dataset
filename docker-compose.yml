@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  synthetic-data:
+    image: mariadb:10.11.7
+    restart: "unless-stopped"
+    command: "mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci"
+    environment:
+      MYSQL_DATABASE: openmrs
+      MYSQL_USER: openmrs
+      MYSQL_PASSWORD: openmrs
+      MYSQL_ROOT_PASSWORD: openmrs
+    volumes:
+      - synthetic-data:/var/lib/mysql
+      - ./synthetic-data:/docker-entrypoint-initdb.d
+    ports:
+      - "3309:3306"
+    networks:
+      - synthetic-data-network
+
+  cloudbeaver-db:
+    image: dbeaver/cloudbeaver:latest
+    restart: unless-stopped
+    ports:
+      - "8979:8978" # Web UI exposed on http://localhost:8978
+    volumes:
+      - cloudbeaver-data:/opt/cloudbeaver/workspace
+    networks:
+      - synthetic-data-network
+
+
+volumes:
+  synthetic-data: ~
+  cloudbeaver-data: ~
+
+
+networks:
+  synthetic-data-network:
+    name: synthetic-data-network
+    driver: bridge
