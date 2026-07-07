@@ -123,7 +123,7 @@ Before cloning, install Git LFS:
 After installing Git LFS, clone the repository:
 
 ```sh
-https://github.com/abertnamanya/openmrs-350-patients-dataset.git
+git clone https://github.com/abertnamanya/openmrs-350-patients-dataset.git
 cd openmrs-350-patients-dataset
 ```
 
@@ -146,11 +146,53 @@ This ensures all large files are properly downloaded.
 
 </details>
 
+# Install Visual Studio Code
+
+Visual Studio Code (VS Code) is a lightweight and powerful code editor used to view, edit, and manage project files. It is recommended for working with this repository.
+
+Follow the installation steps based on your operating system.
+
+---
+
+- Windows
+
+Download Visual Studio Code from the official website:
+   https://code.visualstudio.com/download
+- Ubuntu
+```sh
+sudo snap install code --classic
+```
+- macOS
+```sh 
+brew install --cask visual-studio-code
+```
+
+
+# Open Project in Visual Studio Code
+
+After installing Visual Studio Code, you can open the project repository in the editor.
+
+1. Open Visual Studio Code.
+2. Select:
+`File → Open Folder`
+3. Browse to the location where you cloned the repository.
+4. Select the project folder.
+5. Click Open.
+
+The repository files will now be available in the VS Code Explorer.
+
+
+
 ## Start up docker container services
 
-```bash
-docker compose up -d
-```
+Visual Studio Code includes an integrated terminal that allows you to run Git, Docker, and other project commands without leaving the editor.
+
+## Open Terminal
+1. Go to Menu:
+2. The click terminal 
+3. New terminal
+4. Copy : `docker compose up -d` command and run it in the terminal.
+
 
 **What this does:** Starts all the services including databases and web interfaces.
 
@@ -167,28 +209,32 @@ CloudBeaver is a web-based tool that lets you explore your databases without nee
 
 2. **Create Your Admin Account** (First time only):
    - You'll see a Setup Wizard
-   - Choose any username (suggestion: `admin`)
+   - Choose any username (suggestion: `superuser`)
    - Choose any password (suggestion: `Admin@123` - remember this!)
    - Click through to complete the setup
    - Log in with these credentials
 
 #### Connect to Your Openmrs Database
-
+- Click the Home button icon to access the connection configuration settings.
 
 **Connect to MySQL (For source data and previews):**
 
 1. Click **"New Connection"** again
-2. Select **"MySQL"** from the list
+2. Select **"MariaDB"** from the list
 3. Fill in these exact details:
    - **Host**: `synthetic-data`
    - **Port**: `3306`
    - **Database**: *(leave empty)*
    - **Username**: `root`
    - **Password**: `openmrs`
-4. Click **"Create"**
+4. Click the checkbox to Save credentials for all users with access 
+5. Click **"Create"** button in the top right corner
 
 **Important:** Once connected, you'll see:
-- `openmrs`: Your source data with 350 patients
+- **MariaDB@synthetic-data** on the left handside of the navigation bar
+- Expand the MariaDB@synthetic-data by clicking the arrow icon. 
+- Now you should be able to see the databases:
+- Expand the Openmrs database to be able to see the tables. 
 
 
 **Congratulations on successfully setting up the OpenMRS dataset in a MySQL server using Docker! 🎉**
