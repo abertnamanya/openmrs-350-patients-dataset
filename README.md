@@ -237,5 +237,11 @@ CloudBeaver is a web-based tool that lets you explore your databases without nee
 - Expand the Openmrs database to be able to see the tables. 
 
 
-**Congratulations on successfully setting up the OpenMRS dataset in a MySQL server using Docker! 🎉**
----
+
+## Finally: Sync the Local Repository with the Remote Repository
+
+Pull the latest changes from the remote repository to update the local repository and keep it in sync.
+Run the command below: 
+```sh
+git pull
+```
