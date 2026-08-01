@@ -12,7 +12,7 @@ services:
       MYSQL_ROOT_PASSWORD: openmrs
     volumes:
       - synthetic-data:/var/lib/mysql
-      - ./synthetic-data:/docker-entrypoint-initdb.d
+      - ./synthetic-data/openmrs-2.8-refapp-demo-5284-patients-2026-05-19.sql:/docker-entrypoint-initdb.d/openmrs.sql
     ports:
       - "3309:3306"
     networks:
